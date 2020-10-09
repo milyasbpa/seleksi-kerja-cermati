@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Fragment} from 'react';
+import NotificationPanels from './components/containers/NotificationPanels';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import theme from './styles/theme';
+import Introduction from'./components/containers/Introduction';
+import HighlightsPanel from './components/containers/HighlightsPanel';
+import PageFooter from './components/containers/PageFooter';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MuiThemeProvider theme={theme}> 
+      <Fragment>
+        <NotificationPanels>
+          <Introduction />
+          <HighlightsPanel />
+          <PageFooter />
+        </NotificationPanels>
+    </Fragment>
+    </MuiThemeProvider>
+    
   );
 }
 
