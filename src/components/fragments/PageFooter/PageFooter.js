@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 
 const Container = withStyles(() => ({
     root:{
-        height:'80px',
+        height:'3rem',
         backgroundColor:'#004a75',
         display:'flex',
         justifyContent:'center',

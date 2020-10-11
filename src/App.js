@@ -1,23 +1,26 @@
-import React,{Fragment} from 'react';
-import NotificationPanels from './components/containers/NotificationPanels';
+// import internal modul
+import React, { Fragment } from 'react';
+// import external modul
 import { MuiThemeProvider } from '@material-ui/core/styles';
+// import internal component sesuai abjad
+import HighlightsPanel from './components/fragments/HighlightsPanel';
+import NotificationPanel from './components/layouts/NotificationPanel';
+import PageHeader from './components/fragments/PageHeader';
+import PageFooter from './components/fragments/PageFooter';
+// import style
 import theme from './styles/theme';
-import Introduction from'./components/containers/Introduction';
-import HighlightsPanel from './components/containers/HighlightsPanel';
-import PageFooter from './components/containers/PageFooter';
 
 function App() {
   return (
-    <MuiThemeProvider theme={theme}> 
+    <MuiThemeProvider theme={theme}>
       <Fragment>
-        <NotificationPanels>
-          <Introduction />
+        <NotificationPanel>
+          <PageHeader />
           <HighlightsPanel />
           <PageFooter />
-        </NotificationPanels>
-    </Fragment>
+        </NotificationPanel>
+      </Fragment>
     </MuiThemeProvider>
-    
   );
 }
 

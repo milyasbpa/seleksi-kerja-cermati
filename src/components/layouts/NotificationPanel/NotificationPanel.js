@@ -1,23 +1,31 @@
+// import internal modul
 import React from 'react';
-import clsx from 'clsx';
+import PropTypes from 'prop-types';
+// import external modul
+import { Box, Button, CssBaseline, Drawer, Grid, Typography } from '@material-ui/core'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { Box, Button, Grid } from '@material-ui/core'
-import NewsletterPanel from '../NewsletterPanel/NewsletterPanel';
+import clsx from 'clsx';
+// import internal component
+import NewsletterPanel from '../../fragments/NewsletterPanel';
 
 const drawerHeight = 60;
+
+const StyledBox = withStyles(() => ({
+    root: {
+        width: '100%',
+        overflowX:'hidden',
+    }
+}))(Box);
 
 const StyledButton = withStyles(() => ({
     root: {
         backgroundColor: '#007bc1',
-        color: '#fff',
+        color:'#fff',
         transition: 'none !important',
         '&:hover': {
             backgroundColor: '#007bc1 !important',
         },
     },
-
 }))(Button);
 
 const StyledGrid = withStyles(() => ({
@@ -26,12 +34,6 @@ const StyledGrid = withStyles(() => ({
         margin: '0 auto',
     }
 }))(Grid)
-
-const StyledBox = withStyles(() => ({
-    root:{
-        width:'100%',
-    }
-}))(Box)
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -59,10 +61,9 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '720px',
         margin: '0 auto',
     },
-
 }));
 
-export default function PersistentDrawerLeft({ children }) {
+export default function NotificationPanel({ children }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
@@ -81,12 +82,18 @@ export default function PersistentDrawerLeft({ children }) {
                     paper: classes.drawerPaper,
                 }}
             >
-                <StyledGrid container justify='center'>
+                <StyledGrid container alignItems='center'>
                     <Grid item xs={12} sm={10}>
-                        <span>By accessing and using this website you acknowledge that you have read and understand our Cookie Policy, Privacy Policy and our Term of Service</span>
+                        <Typography variant="subtitle2">
+                            By accessing and using this website you acknowledge that you have read and understand our Cookie Policy, Privacy Policy and our Term of Service
+                        </Typography>
                     </Grid>
                     <Grid item xs={2}>
-                        <StyledButton disableRipple={true} onClick={handleDrawerClose}>Got it</StyledButton>
+                        <StyledButton disableRipple={true} onClick={handleDrawerClose}>
+                            <Typography variant="subtitle2">
+                                Got it
+                            </Typography>
+                        </StyledButton>
                     </Grid>
                 </StyledGrid>
             </Drawer>
@@ -99,7 +106,11 @@ export default function PersistentDrawerLeft({ children }) {
             >
                 {children}
             </StyledBox>
-            <NewsletterPanel/>
+            <NewsletterPanel />
         </div>
-    );
-}
+    )
+};
+
+NotificationPanel.propTypes = {
+    children: PropTypes.node
+};
