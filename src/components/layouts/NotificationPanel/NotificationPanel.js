@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import external modul
-import { Box, Button, CssBaseline, Drawer, Grid, Typography } from '@material-ui/core'
+import { Box, Button, CssBaseline, Drawer, Link, Grid, Typography } from '@material-ui/core'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 // import internal component
@@ -71,6 +71,8 @@ export default function NotificationPanel({ children }) {
         setOpen(false);
     };
 
+    const preventDefault = (event) => event.preventDefault();
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -85,7 +87,12 @@ export default function NotificationPanel({ children }) {
                 <StyledGrid container alignItems='center'>
                     <Grid item xs={12} sm={10}>
                         <Typography variant="subtitle2">
-                            By accessing and using this website you acknowledge that you have read and understand our Cookie Policy, Privacy Policy and our Term of Service
+                            By accessing and using this website you acknowledge that you have read and understand our 
+                            <Link href="#" onClick={preventDefault}> Cookie Policy</Link>
+                            ,
+                            <Link href="#" onClick={preventDefault}> Privacy Policy</Link>
+                            ,  and our
+                            <Link href="#" onClick={preventDefault}> Term of Service</Link> 
                         </Typography>
                     </Grid>
                     <Grid item xs={2}>
